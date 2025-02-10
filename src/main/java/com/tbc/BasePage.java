@@ -1,8 +1,7 @@
 package com.tbc;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,27 +15,28 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        PageFactory.initElements(driver,this);
     }
 
     // დალოდება სანამ ელემენტი გახდება ხილვადი
-    protected WebElement waitForElementToBeVisible(By locator) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    protected WebElement waitForElementToBeVisible(WebElement locator) {
+        return wait.until(ExpectedConditions.visibilityOf(locator));
     }
 
     // ელემენტებისთვის ტექსტების გადაცემა
-    protected void sendKeysToElement(By locator, String text) {
+    protected void sendKeysToElement(WebElement locator, String text) {
         WebElement element = waitForElementToBeVisible(locator);
         element.sendKeys(text);
     }
 
     // ელემენტზე ქლიქი
-    protected void clickOnElement(By locator) {
+    protected void clickOnElement(WebElement locator) {
         WebElement element = waitForElementToBeVisible(locator);
         element.click();
     }
 
     // ელემენტის ტექსტის დაბრუნება
-    protected String getElementText(By locator) {
+    protected String getElementText(WebElement locator) {
         WebElement element = waitForElementToBeVisible(locator);
         return element.getText();
     }
@@ -47,8 +47,9 @@ public class BasePage {
     }
 
     // ელემენტის ატრიბუტის მნიშვნელობის გადამოწმება
-    protected String getElementAttribute(By locator, String attribute) {
+    protected String getElementAttribute(WebElement locator, String attribute) {
         WebElement element = waitForElementToBeVisible(locator);
         return element.getAttribute(attribute);
     }
+
 }

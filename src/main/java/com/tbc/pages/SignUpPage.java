@@ -1,9 +1,10 @@
 package com.tbc.pages;
 
 import com.tbc.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,30 +14,42 @@ public class SignUpPage extends BasePage {
 
     public SignUpPage(WebDriver driver){
         super(driver);
+        PageFactory.initElements(driver,this);
     }
 
-    private By firstNameField = By.id("firstName");
-    private By lastNameField = By.id("lastName");
-    private By emailField = By.id("email");
-    private By passwordField = By.id("password");
-    private By clickButton = By.id("submit");
-    private By errorMessage = By.id("error");
+    @FindBy(id = "firstName")
+    WebElement firstNameField;
+
+    @FindBy(id = "lastName")
+    WebElement lastNameField;
+
+    @FindBy(id = "email")
+    WebElement emailField;
+
+    @FindBy(id = "password")
+    WebElement passwordField;
+
+    @FindBy(id = "submit")
+    WebElement clickButton;
+
+    @FindBy(id = "error")
+    WebElement errorMessage;
 
     public void registration(String firstName, String lastName, String email, String password) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField));
+        wait.until(ExpectedConditions.visibilityOf(firstNameField));
 
-        driver.findElement(firstNameField).sendKeys(firstName);
-        driver.findElement(lastNameField).sendKeys(lastName);
-        driver.findElement(emailField).sendKeys(email);
-        driver.findElement(passwordField).sendKeys(password);
-        driver.findElement(clickButton).click();
-        driver.findElement(errorMessage).getText();
+        firstNameField.sendKeys(firstName);
+        lastNameField.sendKeys(lastName);
+        emailField.sendKeys(email);
+        passwordField.sendKeys(password);
+        clickButton.click();
+        errorMessage.getText();
     }
 
     public String signUpErrorMessage() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage));
+        WebElement errorElement = wait.until(ExpectedConditions.visibilityOf(errorMessage));
         return errorElement.getText().trim();
     }
 }
