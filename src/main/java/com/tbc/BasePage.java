@@ -40,4 +40,4 @@ public class BasePage {
         WebElement element = waitForElementToBeVisible(locator);
         return element.getText();
     }
-};
+}
