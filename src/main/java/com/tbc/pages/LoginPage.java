@@ -25,13 +25,13 @@ public class LoginPage extends BasePage {
 
     // ლოგინის მეთოდი BasePage მეთოდების გამოყენებით
     public void login(String username, String password) {
-        sendKeysToElement(usernameInput, username); // BasePage მეთოდი
-        sendKeysToElement(passwordInput, password); // BasePage მეთოდი
-        clickOnElement(loginClick);                 // BasePage მეთოდი
+        sendKeysToElement(usernameInput, username);
+        sendKeysToElement(passwordInput, password);
+        clickOnElement(loginClick);
     }
 
     // შეცდომის მესიჯის მიღება
     public String getErrorMessage() {
-        return getElementText(errorText); // BasePage მეთოდი ტექსტის მისაღებად
+        return getElementText(errorText);
     }
 }

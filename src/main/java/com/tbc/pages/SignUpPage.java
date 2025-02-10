@@ -48,6 +48,6 @@ public class SignUpPage extends BasePage {
     }
 
     public String signUpErrorMessage() {
-        return getElementText(errorMessage).trim();  // გჭირდებათ მხოლოდ ტექსტი და მისი "trim"
+        return getElementText(errorMessage).trim();
     }
 }
