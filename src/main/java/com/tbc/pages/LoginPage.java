@@ -4,16 +4,13 @@ import com.tbc.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class LoginPage extends BasePage {
 
-    public LoginPage(WebDriver driver){
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(id = "email")
     WebElement usernameInput;
 
@@ -26,23 +23,15 @@ public class LoginPage extends BasePage {
     @FindBy(id = "error")
     WebElement errorText;
 
-    public  void login(String username, String password){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(usernameInput));
-
-
-            usernameInput.sendKeys(username);
-            passwordInput.sendKeys(password);
-            loginClick.click();
-            errorText.getText();
+    // ლოგინის მეთოდი BasePage მეთოდების გამოყენებით
+    public void login(String username, String password) {
+        sendKeysToElement(usernameInput, username); // BasePage მეთოდი
+        sendKeysToElement(passwordInput, password); // BasePage მეთოდი
+        clickOnElement(loginClick);                 // BasePage მეთოდი
     }
 
+    // შეცდომის მესიჯის მიღება
     public String getErrorMessage() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement errorElement = wait.until(ExpectedConditions.visibilityOf(errorText));
-        return errorElement.getText().trim();
+        return getElementText(errorText); // BasePage მეთოდი ტექსტის მისაღებად
     }
 }
-
-
-

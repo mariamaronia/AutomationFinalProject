@@ -48,8 +48,6 @@ public class SignUpPage extends BasePage {
     }
 
     public String signUpErrorMessage() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement errorElement = wait.until(ExpectedConditions.visibilityOf(errorMessage));
-        return errorElement.getText().trim();
+        return getElementText(errorMessage).trim();  // გჭირდებათ მხოლოდ ტექსტი და მისი "trim"
     }
 }

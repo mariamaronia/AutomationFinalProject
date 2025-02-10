@@ -40,16 +40,4 @@ public class BasePage {
         WebElement element = waitForElementToBeVisible(locator);
         return element.getText();
     }
-
-    // URL-ის გადამოწმება
-    protected void waitForUrlToBe(String expectedUrl) {
-        wait.until(ExpectedConditions.urlToBe(expectedUrl));
-    }
-
-    // ელემენტის ატრიბუტის მნიშვნელობის გადამოწმება
-    protected String getElementAttribute(WebElement locator, String attribute) {
-        WebElement element = waitForElementToBeVisible(locator);
-        return element.getAttribute(attribute);
-    }
-
-}
+};
