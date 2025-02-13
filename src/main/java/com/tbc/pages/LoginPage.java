@@ -23,7 +23,7 @@ public class LoginPage extends BasePage {
     @FindBy(id = "error")
     WebElement errorText;
 
-    // ლოგინის მეთოდი BasePage მეთოდების გამოყენებით
+    // პარამეტრების გადაცემა
     public void login(String username, String password) {
         sendKeysToElement(usernameInput, username);
         sendKeysToElement(passwordInput, password);

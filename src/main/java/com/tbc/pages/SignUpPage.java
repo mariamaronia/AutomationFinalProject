@@ -39,12 +39,11 @@ public class SignUpPage extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(firstNameField));
 
-        firstNameField.sendKeys(firstName);
-        lastNameField.sendKeys(lastName);
-        emailField.sendKeys(email);
-        passwordField.sendKeys(password);
-        clickButton.click();
-        errorMessage.getText();
+        sendKeysToElement(firstNameField, firstName);
+        sendKeysToElement(lastNameField, lastName);
+        sendKeysToElement(emailField, email);
+        sendKeysToElement(passwordField, password);
+        clickOnElement(clickButton);
     }
 
     public String signUpErrorMessage() {

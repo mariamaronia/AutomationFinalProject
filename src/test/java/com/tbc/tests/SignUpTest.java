@@ -3,16 +3,11 @@ package com.tbc.tests;
 import com.tbc.BaseTest;
 import com.tbc.pages.ContactListPage;
 import com.tbc.pages.SignUpPage;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;  // Log4j Logger Import
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.tbc.utils.RandomEmailGenerator;
 
 public class SignUpTest extends BaseTest {
-
-    // ლოგერი
-    private static final Logger logger = LogManager.getLogger(SignUpTest.class);
 
     @Test
     public void emailIsAlreadyExists() {
@@ -27,7 +22,6 @@ public class SignUpTest extends BaseTest {
         String expectedErrorMessage = "Email address is already in use";
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "არასწორი ერორი");
 
-        logger.info("რეგისტრაცია წარუმატებელია");
     }
 
     @Test
@@ -43,7 +37,6 @@ public class SignUpTest extends BaseTest {
         String expectedErrorMessage = "User validation failed: email: Email is invalid, password: Path `password` (`f`) is shorter than the minimum allowed length (7).";
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "არასწორი ერორი");
 
-        logger.info("რეგისტრაცია წარუმატებელია");
     }
 
     @Test
@@ -60,7 +53,6 @@ public class SignUpTest extends BaseTest {
         String expectedErrorMessage = "User validation failed: lastName: Path `lastName` is required.";
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "არასწორი ერორი");
 
-        logger.info("რეგისტრაცია წარუმატებელია");
     }
 
     @Test
@@ -85,6 +77,5 @@ public class SignUpTest extends BaseTest {
 
         Assert.assertEquals(actualButtonText, expectedButtonText, "ღილაკი ვერ მოიძებნა");
 
-        logger.info("რეგისტრაცია წარმატებული");
     }
 }

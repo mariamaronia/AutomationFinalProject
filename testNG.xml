@@ -1,0 +1,27 @@
+<suite name = "Final - Project">
+
+    <listeners>
+        <listener class-name="com.tbc.utils.TestListener"/>
+    </listeners>
+
+    <test name = "Login Module">
+        <classes>
+            <class name = "com.tbc.tests.LoginTest">
+            </class>
+        </classes>
+    </test>
+
+    <test name = "Sign Up Module">
+        <classes>
+            <class name = "com.tbc.tests.SignUpTest">
+            </class>
+        </classes>
+    </test>
+
+    <test name = "API">
+        <classes>
+            <class name = "com.tbc.tests.ApiTesting">
+            </class>
+        </classes>
+    </test>
+</suite>
